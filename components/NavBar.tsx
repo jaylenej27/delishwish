@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { Layout, Menu } from 'antd';
 import Link from 'next/link';
-const { Header } = Layout;
 import Image from 'next/image'
 import { useFetchUser } from '../utils/user';
+
+const { Header } = Layout;
 
 const TitleContainer = styled.div`
   ${({ theme }) => `
