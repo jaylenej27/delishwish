@@ -1,1 +1,5 @@
-export default function CreateRecipeForm() {};
+export const CreateRecipeForm = () => {
+  return (
+    <p>hi</p>
+  )
+}
