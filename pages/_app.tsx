@@ -1,5 +1,4 @@
 import 'antd/dist/antd.css';
-import App from 'next/app';
 import { withApollo } from '../components/WithApollo';
 
 function MyApp({ Component, pageProps }) {

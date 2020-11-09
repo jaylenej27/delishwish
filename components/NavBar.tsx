@@ -3,6 +3,7 @@ import { Layout, Menu } from 'antd';
 import Link from 'next/link';
 const { Header } = Layout;
 import Image from 'next/image'
+import { useFetchUser } from '../utils/user';
 
 const TitleContainer = styled.div`
   ${({ theme }) => `
@@ -61,7 +62,10 @@ const StyledMenu = styled(Menu)`
   }
 `;
 
-export const MainNavbar = () => (
+export const MainNavbar = () => {
+  const { user, loading } = useFetchUser();
+  
+  return (
   <StyledHeader>
     <TitleContainer>
       <Title>
@@ -79,6 +83,32 @@ export const MainNavbar = () => (
           <a>Home</a>
         </Link>
       </Menu.Item>
+      {user && !loading
+          ? [
+              <Menu.Item key="/my-recipes">
+                <Link href="/my-recipes">
+                  <a>My Recipes</a>
+                </Link>
+              </Menu.Item>,
+              <Menu.Item key="/favorites">
+              <Link href="/favorites">
+                <a>Favorites</a>
+              </Link>
+              </Menu.Item>,
+              <Menu.Item key="/api/logout">
+                <Link href="/api/logout">
+                  <a>Logout</a>
+                </Link>
+              </Menu.Item>,
+            ]
+          : [
+              <Menu.Item key="/api/login">
+                <Link href="/api/login">
+                  <a>Login</a>
+                </Link>
+              </Menu.Item>,
+            ]}
     </StyledMenu>
   </StyledHeader>
-);
+  )
+  };
