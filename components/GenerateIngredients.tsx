@@ -20,34 +20,54 @@ export const GenerateIngredients = ({
   handleInputChange,
   handleDropdownChange,
 }: IngredientsProps) => {
-  const columns = names.map((name) => ({
-    title: `${name}`,
-    key: `${name}`,
-    render: (ingredient, _record, index: number) => {
-      return name === 'unit' ? (
-        <Dropdown
-          overlay={
-            <MenuList
-              iterableList={units}
-              name={`ingredients[${index}].${name}`}
-              handleDropdownChange={handleDropdownChange}
-            />
-          }
-          placement="bottomLeft"
-        >
-          <Button>{ingredient[name]}</Button>
-        </Dropdown>
-       ) : (
-       <Input
-          value={ingredient[name]}
-          placeholder={`${name}`}
-          name={`ingredients[${index}].${name}`}
-          onChange={handleInputChange}
-        />
-      );
-    },
-  }));
-
+  const columns = _.concat(
+    names.map((name) => ({
+      title: `${name}`,
+      key: `${name}`,
+      render: (ingredient, _record, index: number) => {
+        return name === 'unit' ? (
+          <Dropdown
+            overlay={
+              <MenuList
+                iterableList={units}
+                name={`ingredients[${index}].${name}`}
+                handleDropdownChange={handleDropdownChange}
+              />
+            }
+            placement="bottomLeft"
+          >
+            <Button>{ingredient[name]}</Button>
+          </Dropdown>
+        ) : (
+          <Input
+            value={ingredient[name]}
+            placeholder={`${name}`}
+            name={`ingredients[${index}].${name}`}
+            onChange={handleInputChange}
+          />
+        );
+      },
+    })),
+    [
+      {
+        title: 'delete',
+        key: 'delete',
+        render: (_ingredient, _record, index: number) => (
+          <Button
+            onClick={handleDeleteIngredient}
+            // @ts-ignore
+            type="danger"
+            shape="circle"
+            size="small"
+            name={`${index}`}
+          >
+            -
+          </Button>
+        ),
+      },
+    ],
+  );
+  
   return (
     <>
       <Row>

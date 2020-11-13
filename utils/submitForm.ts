@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 
 export const submitForm = (initialValues, callback) => {
   const [inputs, setInputs] = useState(initialValues);
-  
+
   const handleInputChange = (event) => {
     event.persist();
     setInputs((inputs) => {
@@ -20,12 +20,11 @@ export const submitForm = (initialValues, callback) => {
       return newInputs;
     });
   };
-
   const handleAddIngredient = (event) => {
-    console.log('added');
     event.persist();
     setInputs((inputs) => {
       const sortedIngredients = _.sortBy(inputs.ingredients, ['key']);
+
       const key =
         sortedIngredients.length > 0
           ? sortedIngredients[sortedIngredients.length - 1].key + 1
@@ -39,15 +38,58 @@ export const submitForm = (initialValues, callback) => {
     });
   };
 
-  const handleDeleteIngredient = () => console.log('deleted');
+  const handleDeleteIngredient = (event) => {
+    event.persist();
+    const position = parseInt(event.target.name);
+    setInputs((inputs) => ({
+      ...inputs,
+      ingredients: _.filter(
+        inputs.ingredients,
+        (_i, index) => index !== position,
+      ),
+    }));
+  };
+
+  const handleUpdate = async () => {
+    const updatedResult = await callback();
+    const {
+      content,
+      description,
+      status,
+      title,
+      ingredients,
+      image,
+    } = updatedResult;
+    setInputs(() => ({
+      content,
+      description,
+      status,
+      title,
+      ingredients,
+      image,
+    }));
+  };
 
   const handleSubmit = () => {
     callback();
     setInputs(() => ({ ...initialValues }));
   };
+
+  const handleSubmitImage = (image) => {
+    setInputs((inputs) => {
+      const newInput = _.cloneDeep(inputs);
+      _.set(newInput, 'image', image);
+      console.log(newInput);
+      return newInput;
+    });
+  };
+
   return {
     inputs,
+    setInputs,
     handleSubmit,
+    handleSubmitImage,
+    handleUpdate,
     handleInputChange,
     handleAddIngredient,
     handleDeleteIngredient,

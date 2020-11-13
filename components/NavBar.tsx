@@ -86,29 +86,29 @@ export const MainNavbar = () => {
       </Menu.Item>
       {user && !loading
           ? [
+            <Menu.Item key="/favorites">
+                <Link href="/favorites">
+                  <a>Favorites</a>
+                </Link>
+              </Menu.Item>,
               <Menu.Item key="/my-recipes">
                 <Link href="/my-recipes">
                   <a>My Recipes</a>
                 </Link>
               </Menu.Item>,
-              <Menu.Item key="/favorites">
-              <Link href="/favorites">
-                <a>Favorites</a>
+            <Menu.Item key="/api/logout">
+              <Link href="/api/logout">
+                <a>Logout</a>
               </Link>
-              </Menu.Item>,
-              <Menu.Item key="/api/logout">
-                <Link href="/api/logout">
-                  <a>Logout</a>
-                </Link>
-              </Menu.Item>,
-            ]
-          : [
-              <Menu.Item key="/api/login">
-                <Link href="/api/login">
-                  <a>Login</a>
-                </Link>
-              </Menu.Item>,
-            ]}
+            </Menu.Item>,
+          ]
+        : [
+            <Menu.Item key="/api/login">
+              <Link href="/api/login">
+                <a>Login</a>
+              </Link>
+            </Menu.Item>,
+          ]}
     </StyledMenu>
   </StyledHeader>
   )

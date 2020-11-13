@@ -41,6 +41,7 @@ export function useFetchUser({ required } = {}) {
     }
     return window.__user || null;
   });
+  
   useEffect(
     () => {
       if (!loading && user) {

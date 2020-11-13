@@ -39,7 +39,7 @@ const Recipe = ({ id }) => {
   );
 };
 
-// convert to serversideprops
+// convert to serversideprops?
 Recipe.getInitialProps = ({ query }) => {
   const { id } = query;
   return { id };
