@@ -83,7 +83,12 @@ export const MainNavbar = () => {
         <Link href="/">
           <a>Home</a>
         </Link>
-      </Menu.Item>
+      </Menu.Item>,
+      <Menu.Item key="/login">
+                <Link href="/login">
+                  <a>Login 1</a>
+                </Link>
+              </Menu.Item>,
       {user && !loading
           ? [
             <Menu.Item key="/favorites">
