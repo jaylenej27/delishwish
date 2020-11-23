@@ -41,10 +41,6 @@ const StyledOneRecipe = styled(Col)`
     `}
 `;
 
-// function onChange(checkedValues) {
-//   console.log('checked = ', checkedValues);
-// }
-
 export const OneRecipe = ({ recipe }: { recipe: Recipe }) => {
   const { image, title, description, content } = recipe;
   const ingredients = _.get(recipe, 'ingredients');
