@@ -87,7 +87,7 @@ export const MainNavbar = () => {
       </Menu.Item>
       <Menu.Item key="login">
                 <Link href="/login">
-                  <a>Login 1</a>
+                  <a>Login</a>
                 </Link>
               </Menu.Item>
     </StyledMenu>

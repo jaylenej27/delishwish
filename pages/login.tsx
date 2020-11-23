@@ -16,7 +16,7 @@ export default function Login(props: Props) {
   const router = useRouter();
 
   return (
-    <MainLayout loggedIn={props.loggedIn}>
+    <MainLayout>
       <Head>
         <title>Login</title>
       </Head>
