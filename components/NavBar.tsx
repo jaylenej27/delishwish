@@ -58,6 +58,7 @@ const StyledHeader = styled(Header)`
 const StyledMenu = styled(Menu)`
   border-bottom-width: 0px;
   width: 50%;
+  line-height: 64px;
   @media (max-width: 890px) {
     width: 100%;
   }
@@ -78,42 +79,17 @@ export const MainNavbar = () => {
       </Title>
     </TitleContainer>
 
-    <StyledMenu theme="light" mode="horizontal" style={{ lineHeight: '64px' }}>
+    <StyledMenu theme="light" mode="horizontal">
       <Menu.Item key="/">
         <Link href="/">
           <a>Home</a>
         </Link>
-      </Menu.Item>,
-      <Menu.Item key="/login">
+      </Menu.Item>
+      <Menu.Item key="login">
                 <Link href="/login">
                   <a>Login 1</a>
                 </Link>
-              </Menu.Item>,
-      {user && !loading
-          ? [
-            <Menu.Item key="/favorites">
-                <Link href="/favorites">
-                  <a>Favorites</a>
-                </Link>
-              </Menu.Item>,
-              <Menu.Item key="/my-recipes">
-                <Link href="/my-recipes">
-                  <a>My Recipes</a>
-                </Link>
-              </Menu.Item>,
-            <Menu.Item key="/api/logout">
-              <Link href="/api/logout">
-                <a>Logout</a>
-              </Link>
-            </Menu.Item>,
-          ]
-        : [
-            <Menu.Item key="/api/login">
-              <Link href="/api/login">
-                <a>Login</a>
-              </Link>
-            </Menu.Item>,
-          ]}
+              </Menu.Item>
     </StyledMenu>
   </StyledHeader>
   )
