@@ -14,8 +14,6 @@ const {
   APIKEY,
 } = publicRuntimeConfig.graphcms;
 
-console.log(CDNBASE);
-
 export const PictureUploader = ({
   setRecipeState,
   handleSubmitImage,
