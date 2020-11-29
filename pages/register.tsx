@@ -67,22 +67,26 @@ export default function Register(props: { token: string }) {
         }}
       >
         <input
-          data-cy="register-username-input"
+        placeholder='first name'
+          data-cy="register-input"
           value={firstname}
           onChange={(e) => setFirstname(e.currentTarget.value)}
         />
         <input
-          data-cy="register-username-input"
+        placeholder='last name'
+          data-cy="register-input"
           value={lastname}
           onChange={(e) => setLastname(e.currentTarget.value)}
         />
 
         <input
+        placeholder='username'
           data-cy="register-username-input"
           value={username}
           onChange={(e) => setUsername(e.currentTarget.value)}
         />
         <input
+        placeholder='password'
           data-cy="register-password-input"
           value={password}
           type="password"

@@ -57,6 +57,7 @@ export default function Login(props: Props) {
         }}
       >
         <input
+        placeholder='username'
         className="input"
           data-cy="login-username-input"
           value={username}
@@ -64,6 +65,7 @@ export default function Login(props: Props) {
         />
 
         <input
+        placeholder='password'
         className="input"
           data-cy="login-password-input"
           value={password}
